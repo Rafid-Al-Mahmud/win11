@@ -58,7 +58,7 @@
             backdrop-filter: blur(20px);
         }
 
-        #taskbar {
+        .taskbar {
             background-color: rgb(0, 0, 0);
             /* Fallback color */
             background-color: rgba(0, 0, 0, 0.4);
@@ -78,7 +78,7 @@
             animation: popintro .4s ease-in-out;
         }
 
-        #taskbar img {
+        .taskbar img {
             width: 50px;
         }
 
@@ -107,7 +107,7 @@
                 group of companies.
             </p>
         </div>
-        <div id="taskbar">
+        <div class="taskbar">
             <img
                 src="https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg">
             <img
@@ -119,7 +119,10 @@
 
     <script>
         $ = (x = "*") => document.querySelectorAll(x);
-
+        addEventListener("fullscreenchange", (event) => {
+            document.querySelector('.taskbar').style.animation="popintro .4s ease-in-out";
+            document.querySelector('.bg').style.animation="popintro .4s ease-in-out";
+        });
     </script>
 </body>
 
