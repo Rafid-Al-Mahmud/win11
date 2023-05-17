@@ -1,2 +1,2 @@
 # win11
-A online windows simulator.
+An online windows simulator.
