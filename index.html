@@ -14,14 +14,13 @@
 
         * {
             box-sizing: border-box;
-            transition: all 2s ease;
             -webkit-font-smoothing: antialiased;
         }
 
         .bg {
             /* The image used */
-            background-image: url("https://r4.wallpaperflare.com/wallpaper/912/685/297/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-90904529ef865ed3f8df37d67bb62418.jpg");
-            /*background-image: url("https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg");*/
+            /* background-image: url("https://r4.wallpaperflare.com/wallpaper/912/685/297/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-90904529ef865ed3f8df37d67bb62418.jpg"); */
+            background-image: url("https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg");
 
             /* Add the blur effect */
             filter: blur(8px);
@@ -39,47 +38,114 @@
         }
 
         /* Position text in the middle of the page/image */
-        .desktop {
+        .popup {
             background-color: rgb(0, 0, 0);
             /* Fallback color */
             background-color: rgba(0, 0, 0, 0.4);
             /* Black w/opacity/see-through */
             color: white;
             font-weight: bold;
-            border: 3px solid #f1f1f1;
-            position: absolute;
-            top: 50%;
+            /* border: 3px solid #f1f1f1; */
+            position: fixed;
+            top: 0%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, 0%);
             z-index: 2;
-            width: 80%;
             padding: 20px;
             text-align: center;
             backdrop-filter: blur(20px);
         }
 
+        .desktop {
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* transform: translate(0%, 0%); */
+            z-index: 2;
+            height: 100vh;
+            height: calc(100vh - 48px);
+            padding: 20px;
+            text-align: center;
+            /* width: 100%; */
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            border-radius: 100px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #0000ffaa;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0000ff80;
+        }
+
         .taskbar {
             background-color: rgb(0, 0, 0);
             /* Fallback color */
-            background-color: rgba(0, 0, 0, 0.4);
+            /* background-color: rgba(0, 0, 0, 0.4); */
+            background-color: rgba(32, 32, 32, .75);
             /* Black w/opacity/see-through */
             color: white;
             font-weight: bold;
-            border: 3px solid #f1f1f1;
             position: absolute;
             top: 100%;
             left: 0%;
-            transform: translate(5%, -100%);
+            /* transform: translate(5%, -105%); */
+            transform: translate(0%, -100%);
             z-index: 2;
-            width: 90%;
-            padding: 2px 20px;
+            /* width: 90%; */
+            width: 100%;
             text-align: center;
             backdrop-filter: blur(20px);
             animation: popintro .4s ease-in-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+            padding: 20px 5px;
         }
 
-        .taskbar img {
-            width: 50px;
+        .taskbar>.taskcontent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: auto;
+        }
+
+        .taskbar>.taskcontent>div[tsbar] {
+            margin: 0px 5px;
+            border-radius: 5px;
+            height: 35px;
+            width: 35px;
+            transition: all 0.1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .taskbar>.taskcontent>div[tsbar]:hover {
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .taskbar>.taskcontent>div[tsbar]>img {
+            height: 60%;
+            transition: all 0.1s ease;
         }
 
         @keyframes popintro {
@@ -95,35 +161,62 @@
     <div class="bg"></div>
     <div class="app">
         <div class="desktop">
-            <h2>An online windows simulator.</h2>
-            <h1
-                style="font-size:50px; font-family: 'system-ui', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                WIN11</h1>
-            <p style="font-weight: lighter;"><b>About:</b> Win11React is an open source project made in the hope to replicate the Windows 11 desktop experience
-                on web, using standard web technologies like HTML, CSS, and JavaScript. This project is not licensed. contact :&nbsp;<a target="_blank" href="mailto:rafidalmahmud08@gmail.com"
-                rel="noreferrer">rafidalmahmud08@gmail.com</a> This project is not in any way affiliated with Microsoft and should not be confused with Microsoft's
-                Operating System or Products. This is also not&nbsp;<a target="_blank" href="https://www.microsoft.com/en-in/windows-365"
-                rel="noreferrer">Windows 365 cloud PC</a>. Microsoft, Windows and Other demonstrated Products in this project are trademarks of the Microsoft
-                group of companies.
-            </p>
+            <div class="popup">
+                <h2>An online windows simulator.</h2>
+                <h1
+                    style="font-size:50px; font-family: 'system-ui', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                    WIN11</h1>
+                <p style="font-weight: lighter;"><b>About:</b> Win11React is an open source project made in the hope to
+                    replicate the Windows 11 desktop experience
+                    on web, using standard web technologies like HTML, CSS, and JavaScript. This project is not
+                    licensed.
+                    contact :&nbsp;<a target="_blank" href="mailto:rafidalmahmud08@gmail.com"
+                        rel="noreferrer">rafidalmahmud08@gmail.com</a> This project is not in any way affiliated with
+                    Microsoft and should not be confused with Microsoft's
+                    Operating System or Products. This is also not&nbsp;<a target="_blank"
+                        href="https://www.microsoft.com/en-in/windows-365" rel="noreferrer">Windows 365 cloud PC</a>.
+                    Microsoft, Windows and Other demonstrated Products in this project are trademarks of the Microsoft
+                    group of companies.
+                </p>
+            </div>
         </div>
         <div class="taskbar">
-            <img
-                src="https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg">
-            <img
-                src="https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg">
+            <div class="taskleft">NEWS</div>
+            <div class="taskcontent">
+                <div tsbar="HOME">
+                    <img src="https://win11.blueedge.me/img/icon/home.png">
+                </div>
+                <div tsbar="MS-EDGE">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg">
+                </div>
+                <div tsbar="SETTINGS">
+                    <img src="https://win11.blueedge.me/img/icon/settings.png">
+                </div>
+                <div tsbar="MS-EXPLOERER">
+                    <img src="https://win11.blueedge.me/img/icon/explorer.png">
+                </div>
+                <div tsbar="SPOTIFY">
+                    <img src="https://win11.blueedge.me/img/icon/spotify.png">
+                </div>
+            </div>
+            <div class="taskright"></div>
         </div>
-    </div>
 
 
 
-    <script>
-        $ = (x = "*") => document.querySelectorAll(x);
-        addEventListener("fullscreenchange", (event) => {
-            document.querySelector('.taskbar').style.animation="popintro .4s ease-in-out";
-            document.querySelector('.bg').style.animation="popintro .4s ease-in-out";
-        });
-    </script>
+        <script>
+            $ = (x = "*") => document.querySelectorAll(x);
+            for (let i = 0; i < $('[tsbar]').length; i++) {
+                const e = $('[tsbar]')[i];
+                const eimg = $('[tsbar]>img')[i];
+                e.addEventListener("mousedown", (event) => eimg.style.scale = "0.5");
+                e.addEventListener("mouseup", (event) => eimg.style.scale = "1");
+            }
+            setInterval(() => {
+                $('.taskright')[0].innerHTML=date("h")+":"+date("mi")+":"+date("s");
+            }, 0);
+        </script>
+        <script src="https://rafid-al-mahmud.github.io/cdn/date.js"></script>
 </body>
 
 </html>
