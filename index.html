@@ -11,7 +11,8 @@ body, html {
 
 * {
   box-sizing: border-box;
-  transition: all 2s ease-in-out;
+  transition: all 2s ease;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
@@ -31,6 +32,8 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   /*background-attachment: fixed;*/
+  transition: all 2s ease;
+  animation: popintro .8s ease-in-out;
 }
 
 /* Position text in the middle of the page/image */
@@ -67,6 +70,12 @@ main {
   backdrop-filter: blur(20px);
 }
 #taskbar img{width:50px;}
+@keyframes {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
 </style>
 </head>
 <body>
