@@ -15,7 +15,7 @@ body, html {
   -webkit-font-smoothing: antialiased;
 }
 
-main {
+.bg {
   /* The image used */
   background-image: url("https://r4.wallpaperflare.com/wallpaper/912/685/297/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-90904529ef865ed3f8df37d67bb62418.jpg");
   /*background-image: url("https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg");*/
@@ -32,7 +32,6 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   /*background-attachment: fixed;*/
-  transition: all 2s ease;
   animation: popintro .8s ease-in-out;
 }
 
@@ -70,8 +69,9 @@ main {
   backdrop-filter: blur(20px);
 }
 #taskbar img{width:50px;}
-@keyframes {
-  0% {
+
+@keyframes popintro {
+  0%{
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -79,14 +79,14 @@ main {
 </style>
 </head>
 <body>
-
-<main>
-<div class="content">
-  <h2>Blurred Background</h2>
-  <h1 style="font-size:50px">I am John Doe</h1>
-  <p>And I'm a Photographer</p>
+  <div class="bg"></div>
+<div class="app">
+  <div class="content">
+    <h2>Blurred Background</h2>
+    <h1 style="font-size:50px">I am John Doe</h1>
+    <p>And I'm a Photographer</p>
+  </div>
 </div>
-</main>
 
 <footer id="taskbar">
 <img src="https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg"><img src="https://r4.wallpaperflare.com/wallpaper/553/119/620/windows-10-windows-10x-windows-11-minimalism-material-minimal-hd-wallpaper-d030b5990f46fe33682fc7e6cbf68458.jpg">
