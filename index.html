@@ -143,8 +143,12 @@
             background: rgba(255, 255, 255, .1);
         }
 
-        .taskbar>.taskcontent>div[tsbar]>img {
+        .taskbar>.taskcontent>div[tsbar]>img{
             height: 60%;
+            transition: all 0.1s ease;
+        }
+        .taskbar>.taskleft>img{
+            height: 25px;
             transition: all 0.1s ease;
         }
 
@@ -205,9 +209,53 @@
                         style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
                 </div>
             </div>
+            <div winapp="VSCODE" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Visual Studio Code {VSCODE}</h3>
+                <div>
+                    <iframe src="https://github1s.com/blueedgetechno/win11React" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="VSCODE-INSIDERS" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Visual Studio Code Insiders {VSCODE-INSIDERS}</h3>
+                <div>
+                    <iframe src="https://insiders.vscode.dev/" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="WORDPAD" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Wordpad {WORDPAD}</h3>
+                <div>
+                    <iframe src="https://store.win11react.com/data/word.html" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="EXCELPAD" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Excelpad {EXCELPAD}</h3>
+                <div>
+                    <iframe src="https://store.win11react.com/data/excel.html" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="MARKDOWN-EDITOR" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Markdown Editor {MARKDOWN-EDITOR}</h3>
+                <div>
+                    <iframe src="https://rededge.is-a.dev/mdown-editor/" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="2048-GAME" style="background: white;width:100%;height:100%;color: black;">
+                <h3>2048 {2048-GAME}</h3>
+                <div>
+                    <iframe src="https://glebbahmutov.com/2048/" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
         </div>
         <div class="taskbar">
-            <div class="taskleft">NEWS</div>
+            <div class="taskleft">
+                <img src="https://win11.blueedge.me/img/icon/widget.png">
+            </div>
             <div class="taskcontent">
                 <div tsbar="HOME">
                     <img src="https://win11.blueedge.me/img/icon/home.png">
@@ -231,6 +279,30 @@
                     <img src="https://win11.blueedge.me/img/icon/store.png">
                 </div>
                 <div tsbar="CHROME" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="VSCODE" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="VSCODE-INSIDERS" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="WORDPAD" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="EXCELPAD" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="MARKDOWN-EDITOR" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
+                <div tsbar="2048-GAME" class="win-app">
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
                 </div>
@@ -261,6 +333,12 @@
             for (let i = 0; i < $('[tsbar]').length; i++) {
                 const e = $('[tsbar]')[i];
                 const eimg = $('[tsbar]>img')[i];
+                e.addEventListener("mousedown", (event) => eimg.style.scale = "0.5");
+                e.addEventListener("mouseup", (event) => eimg.style.scale = "1");
+            }
+            for (let i = 0; i < $('.taskleft').length; i++) {
+                const e = $('.taskleft')[i];
+                const eimg = $('.taskleft>img')[i];
                 e.addEventListener("mousedown", (event) => eimg.style.scale = "0.5");
                 e.addEventListener("mouseup", (event) => eimg.style.scale = "1");
             }
