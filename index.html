@@ -66,7 +66,7 @@
             z-index: 2;
             height: 100vh;
             height: calc(100vh - 48px);
-            padding: 20px;
+            /* padding: 20px; */
             text-align: center;
             /* width: 100%; */
             width: 100vw;
@@ -162,6 +162,8 @@
     <div class="app">
         <div class="desktop">
             <div class="popup">
+                <div style="cursor: pointer;font-size: 20px;font-family: cursive, systen-ui;"
+                    onclick="this.parentElement.style.display='none'">X</div>
                 <h2>An online windows simulator.</h2>
                 <h1
                     style="font-size:50px; font-family: 'system-ui', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
@@ -179,6 +181,13 @@
                     group of companies.
                 </p>
             </div>
+            <div class="win-app" style="display: none;background: white;width:100%;height:100%;color: black;">
+                <h3>MS-EDGE</h3>
+                <input type="tel" name="" id="" style="width: 80%;"><button
+                    onclick="$('iframe')[0].src=$('input')[0].value">SEARCH</button>
+                <div><iframe src="https://bing.com" frameborder="0" 
+                style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe></div>
+            </div>
         </div>
         <div class="taskbar">
             <div class="taskleft">NEWS</div>
@@ -186,7 +195,7 @@
                 <div tsbar="HOME">
                     <img src="https://win11.blueedge.me/img/icon/home.png">
                 </div>
-                <div tsbar="MS-EDGE">
+                <div tsbar="MS-EDGE" onclick="c('hide')" ondblclick="c('show')">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg">
                 </div>
                 <div tsbar="SETTINGS">
@@ -206,6 +215,15 @@
 
         <script>
             $ = (x = "*") => document.querySelectorAll(x);
+            function c(d) {
+                if (d === 'hide') {
+                    $('.desktop>.popup')[0].style.display = 'none';
+                    $('.desktop>.win-app')[0].style.display = 'block';
+                } else if (d === 'show') {
+                    $('.desktop>.popup')[0].style.display = 'block';
+                    $('.desktop>.win-app')[0].style.display = 'none';
+                }
+            }
             for (let i = 0; i < $('[tsbar]').length; i++) {
                 const e = $('[tsbar]')[i];
                 const eimg = $('[tsbar]>img')[i];
@@ -213,7 +231,7 @@
                 e.addEventListener("mouseup", (event) => eimg.style.scale = "1");
             }
             setInterval(() => {
-                $('.taskright')[0].innerHTML=date("h")+":"+date("mi")+":"+date("s");
+                $('.taskright')[0].innerHTML = date("h") + ":" + date("mi") + ":" + date("s");
             }, 0);
         </script>
         <script src="https://rafid-al-mahmud.github.io/cdn/date.js"></script>
