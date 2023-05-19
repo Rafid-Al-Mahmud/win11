@@ -154,6 +154,12 @@
                 transform: scale(0);
             }
         }
+
+        /* .win-app {
+            transition: all cubic-bezier(.85, .14, .14, .85) .25s;
+            -webkit-transform-origin: center;
+            transform-origin: center;
+        } */
     </style>
 </head>
 
@@ -161,7 +167,7 @@
     <div class="bg"></div>
     <div class="app">
         <div class="desktop">
-            <div class="popup">
+            <div class="popup" style="display: none;">
                 <div style="cursor: pointer;font-size: 20px;font-family: cursive, systen-ui;"
                     onclick="this.parentElement.style.display='none'">X</div>
                 <h2>An online windows simulator.</h2>
@@ -181,12 +187,23 @@
                     group of companies.
                 </p>
             </div>
-            <div class="win-app" style="display: none;background: white;width:100%;height:100%;color: black;">
-                <h3>MS-EDGE</h3>
-                <input type="tel" name="" id="" style="width: 80%;"><button
-                    onclick="$('iframe')[0].src=$('input')[0].value">SEARCH</button>
-                <div><iframe src="https://bing.com" frameborder="0" 
-                style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe></div>
+            <div winapp="MS-EDGE" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Microsoft Edge {MS-EDGE}</h3>
+                <input type="text" name="" id="" style="width: 80%;">
+                <button onclick="$('iframe')[0].src=$('[winapp=MS-EDGE]>input')[0].value">SEARCH</button>
+                <div>
+                    <iframe src="https://bing.com/" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
+            </div>
+            <div winapp="CHROME" style="background: white;width:100%;height:100%;color: black;">
+                <h3>Google Chrome {CHROME}</h3>
+                <input type="text" name="" id="" style="width: 80%;">
+                <button onclick="$('iframe')[0].src=$('[winapp=CHROME]>input')[0].value">SEARCH</button>
+                <div>
+                    <iframe src="https://www.google.com/?igu=1" frameborder="0"
+                        style="width:100%; height:500px; padding:20px;overflow: auto;"></iframe>
+                </div>
             </div>
         </div>
         <div class="taskbar">
@@ -195,7 +212,10 @@
                 <div tsbar="HOME">
                     <img src="https://win11.blueedge.me/img/icon/home.png">
                 </div>
-                <div tsbar="MS-EDGE" onclick="c('hide')" ondblclick="c('show')">
+                <div tsbar="MS-SEARCH">
+                    <img src="./search.svg">
+                </div>
+                <div tsbar="MS-EDGE" class="win-app">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg">
                 </div>
                 <div tsbar="SETTINGS">
@@ -207,21 +227,35 @@
                 <div tsbar="SPOTIFY">
                     <img src="https://win11.blueedge.me/img/icon/spotify.png">
                 </div>
+                <div tsbar="MS-STORE">
+                    <img src="https://win11.blueedge.me/img/icon/store.png">
+                </div>
+                <div tsbar="CHROME" class="win-app">
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg">
+                </div>
             </div>
             <div class="taskright"></div>
         </div>
 
-
-
         <script>
             $ = (x = "*") => document.querySelectorAll(x);
-            function c(d) {
-                if (d === 'hide') {
-                    $('.desktop>.popup')[0].style.display = 'none';
-                    $('.desktop>.win-app')[0].style.display = 'block';
-                } else if (d === 'show') {
-                    $('.desktop>.popup')[0].style.display = 'block';
-                    $('.desktop>.win-app')[0].style.display = 'none';
+            for (let i = 0; i < $('[winapp]').length; i++) {
+                $('[winapp]')[i].style.display = 'none';
+            }
+            for (let i = 0; i < $('.win-app').length; i++) {
+                $('.win-app')[i].addEventListener("click", () => ocApp($('.win-app')[i].getAttribute('tsbar')));
+            }
+            function ocApp(ocAppName) {
+                let x = ocAppName;
+                console.log('ocApp: "' + x + '"');
+                if ($(`[winapp="${x}"]`)[0].style.display === 'none') {
+                    $(`[winapp="${x}"]`)[0].style.display = 'block';
+                    $(`[tsbar="${x}"]`)[0].style.borderBottom = '1px solid white';
+                }
+                else if ($(`[winapp="${x}"]`)[0].style.display === 'block') {
+                    $(`[winapp="${x}"]`)[0].style.display = 'none';
+                    $(`[tsbar="${x}"]`)[0].style.borderBottom = 'none';
                 }
             }
             for (let i = 0; i < $('[tsbar]').length; i++) {
@@ -235,6 +269,9 @@
             }, 0);
         </script>
         <script src="https://rafid-al-mahmud.github.io/cdn/date.js"></script>
+        <!-- <script src="https://rafid-al-mahmud.github.io/cdn/fc.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://rafid-al-mahmud.github.io/cdn/pm.css">
+        <link type="text/css" rel="stylesheet" href="https://rafid-al-mahmud.github.io/cdn/btns.css"> -->
 </body>
 
 </html>
